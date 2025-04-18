@@ -1,0 +1,84 @@
+{% load static %}
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+    <!--===============================================================================================-->
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../static/assets/images/owner_login.jpg');
+            background-size: cover;
+            background-position: left;
+            background-color: transparent;
+        }
+        
+        .container-login100 {
+            background-color: transparent !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+                <form method="POST">
+                    <span class="login100-form-title p-b-32">
+                      OwnerSignup
+                  </span> {% csrf_token %}
+                    <div class="form-group">
+                        <label>Owner Name</label>
+                        <input type="text" class="form-control" name="Ownername" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label>Owner Email</label>
+                        <input type="email" class="form-control" name="Owneremail" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label>Owner Phone No:</label>
+                        <input type="number" class="form-control" name="Ownerphone" placeholder="Enter phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Owner State:</label>
+                        <input type="text" name="Ownerstate" class="form-control" name="Ownerphone" placeholder="Enter state">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+
+                    <input type="submit" class="btn btn-primary my-3" value="Singup">
+                </form>
+                <a href="{% url 'ownerlogin' %}" style="font-size: 17px;color: blue;" class="py-3">
+                  Already have account? Login
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

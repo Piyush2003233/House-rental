@@ -1,0 +1,36 @@
+
+
+
+<html>
+    <head>
+        <h2>All Hostory Data</h2>
+    </head>
+    <table border="2px">
+        <thead>
+            <th>Username</th>
+            <th>Ownername</th>
+            <th>Propertyname</th>
+            <th>Approved_date</th>
+            <th>Document</th>
+            
+            
+        </thead>
+        <tbody>
+            {% for i in mod %}
+            <tr>
+                <td>{{i.user_id}}</td>
+                <td>{{i.owner_id}}</td>
+                <td>{{i.prop_id}}</td>
+                <td>{{i.date}}</td>
+                
+                <td>
+                    <object data="{{i.document.url}}" type="application/pdf,.zip,.rar,.7zip" width="150" height="200">
+                        <a target="_blank" href="{{i.document.url}}">File</a>
+                      </object>
+                </td>
+               
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</html>

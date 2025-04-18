@@ -1,0 +1,72 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block content_data %}
+<style>
+  body{
+      background-color:#ffffff;
+  }
+</style>
+<section class="w3l-cover-3">
+  <div class="cover top-bottom">
+    <div class="container">
+      <div class="middle-section text-center">
+        <div class="section-width">
+          <p>It's great to be home!</p>
+          <h2>Find a property today</h2>
+          <div class="most-searches">
+            
+          </div>
+          <form action="{% url 'alllist' %}" class="w3l-cover-3-gd" method="GET">
+          
+            <input type="search" name="search_data" placeholder="Enter keywords" style="margin-left: 206px;" required>
+            
+            
+            <button type="submit" class="btn-primary">Search</button>
+            
+          </form>
+        
+        
+        </div>
+        <section id="bottom" class="demo">
+          <a href="#bottom"><span></span>Scroll</a>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="w3l-index3" id="about">
+  <div class="container-fluid  midd-w3 pb-5">
+      <div class="mt-1 pb-lg-5 pb-md-4 pb-2">
+          <div class="row">
+              <div class="col-lg-5 pr-lg-0">
+                  <div class="w3l-left-img">
+                  </div>
+              </div>
+              <div class="col-lg-7 pl-lg-0">
+                  <div class="w3l-right-info">
+                      <h6 class="title-small">Who we are</h6>
+                      <h3 class="title-big">The experts in local and international property</h3>
+                      <p class="mt-4">We have over 15 year experience, Over 20,000 people work for us in more than 70
+                          countries all over the world. Learn more about our work!
+                          
+                      </p>
+             
+                      <ul class="w3l-right-book w3l-right-book-grid mt-md-5 mt-4">
+                          <li><span class="fa fa-check" aria-hidden="true"></span>Outstanding property</li>
+                          <li><span class="fa fa-check" aria-hidden="true"></span>Social responsibility</li>
+                          <li><span class="fa fa-check" aria-hidden="true"></span>Get expert advice</li>
+                          <li><span class="fa fa-check" aria-hidden="true"></span>Group structure</li>
+                          <li><span class="fa fa-check" aria-hidden="true"></span>Specialist services</li>
+                          <li><span class="fa fa-check" aria-hidden="true"></span>Vision & strategy</li>
+                      </ul>
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+{% endblock content_data %}
+

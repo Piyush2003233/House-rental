@@ -1,0 +1,208 @@
+ {% extends 'userbase.html' %} {% load static %} {% block content_data %}
+<!--/header-->
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
+        <div class="container pt-lg-5 py-3">
+        </div>
+    </div>
+</section>
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a href="{% url 'UserIndexPage' %}">Home</a></li>
+            <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> Property</li>
+            <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> property single</li>
+        </ul>
+    </div>
+</section>
+<!--/blog-post-->
+<section class="w3l-blog post-content py-5">
+    <div class="container py-lg-4 py-md-3 py-2">
+        <div class="inner mb-4">
+            <ul class="blog-single-author-date align-items-center">
+                <li>
+                    <div class="listing-category"><span>Rent</span></div>
+                </li>
+                <li><span class="fa fa-eye"></span> {{data.view_count}} views</li>
+            </ul>
+        </div>
+        <div class="post-content">
+            <h2 class="title-single"> {{data.title}}</h2>
+        </div>
+        <div class="blo-singl mb-4">
+            <ul class="blog-single-author-date align-items-center">
+                <li>
+                    <p>{{data.address}}</p>
+                </li>
+                <li><span class="fa fa-bed"></span> {{data.beds_qty}} Beds</li>
+                <li><span class="fa fa-bath"></span> {{ data.baths_qty }} Baths</li>
+                <li><span class="fa fa-share-square-o"></span> {{data.sqrft}} sqrft</li>
+            </ul>
+            <ul class="share-post">
+                <a href="#url" class="cost-estate m-o">₹{{data.price}}</a>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 w3l-news">
+                <div class="blog-single-post">
+                    <div class="single-post-image mb-5">
+                        <div class="owl-blog owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="card">
+                                    <img src="{{data.image.url}}" class="img-fluid radius-image" alt="image">
+                                </div>
+                            </div>
+                            <div class="card">
+                                <video name='demo' controls width='100%' height='40%'>
+                                        {% if data.video %}
+                                        <source src="{{data.video.url}}" 
+                                        type="video/mp4"></source>
+                                        {% else %}
+                                        <h6>no data</h6>
+                                        {% endif %}
+                                    </video>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="single-post-content">
+                    <h3 class="post-content-title mb-3">Description</h3>
+                    <p class="mb-4">{{ data.description }}</p>
+                    <div class="single-bg-white">
+                        <h3 class="post-content-title mb-4">Property detail</h3>
+                        <ul class="details-list">
+                            <li><strong>Property id :</strong> {{data.property_id}} </li>
+                            <li><strong>Property size :</strong> {{data.sqrft}}sqft </li>
+                            <li><strong>Rooms :</strong> {{data.rooms}} </li>
+                            <li><strong>Bedrooms :</strong> {{data.beds_qty}} </li>
+                            <li><strong>Bathrooms :</strong> {{data.baths_qty}} </li>
+                        </ul>
+                    </div>
+                    <div class="single-bg-white">
+                        <h3 class="post-content-title mb-4">Amenities</h3>
+                        <ul class="details-list">
+                            {% if data.AC == True %}
+                            <li><strong>Air Conditioning </strong></li>
+                            {% endif %} {% if data.builtin_wardrobe == True %}
+                            <li><strong>Buil-In Wardrobes </strong> </li>
+                            {% endif %} {% if data.dish_washer == True %}
+                            <li><strong>Dishwasher</strong> </li>
+                            {% endif %} {% if data.floor_covering == True %}
+                            <li><strong>Floor Coverings </strong> </li>
+                            {% endif %} {% if data.medical == True %}
+                            <li><strong>Medical / Clinic </strong> </li>
+                            {% endif %} {% if data.fencing == True %}
+                            <li><strong>Fencing</strong> </li>
+                            {% endif %} {% if data.internet == True %}
+                            <li><strong>Internet and wifi </strong> </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="sidebar-side col-lg-4 col-md-12 col-sm-12 mt-lg-0 mt-5">
+                <aside class="sidebar">
+
+                    <!-- Popular Post Widget-->
+                    <div class="sidebar-widget popular-posts">
+                        {% if request.session.email == data.email_id %}
+                        <a href="{% url 'deleteproperty' id=data.id %}" class="btn btn-danger btn-style w-100">Delete Property</a> {% elif data.rooms >= 1 %}
+                        <div class="sidebar-title">
+                            <h4>Contact an Agent</h4>
+                        </div>
+                        <article class="post">
+                            <figure class="post-thumb"><img src="{% static 'assets/images/l5.jpg' %}" class="radius-image" alt="">
+                            </figure>
+                            <div class="text mb-0">
+                                <div class="post-info">{{data.email_id}}</div>
+                            </div>
+                        </article>
+                        {% else %}
+                        <a href="#" onclick="alert(' No More Rooms Available...:( ');" class="btn btn-primary btn-style w-100">Request details</a> {% endif %}
+                    </div>
+
+
+                    <!-- Popular Post Widget-->
+                    <a href="/propbooking/{{ data.id }}/" class="btn btn-primary btn-style w-100">Book Now !!</a>
+
+                </aside>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-5">
+                <h2 class="py-2">Feedback</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Rating : </label>
+                        <select name="rating" class="form-control">
+                            <option value="1" {% if feed.rating == "1" %} selected {% endif %}>1</option>
+                            <option value="2" {% if feed.rating == "2" %} selected {% endif %}>2</option>
+                            <option value="3" {% if feed.rating == "3" %} selected {% endif %}>3</option>
+                            <option value="4" {% if feed.rating == "4" %} selected {% endif %}>4</option>
+                            <option value="5" {% if feed.rating == "5" %} selected {% endif %}>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Feedback : </label>
+                        <textarea name="feedback" class="form-control">{{ feed.feedback }}</textarea>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="submit">
+                </form>
+            </div>
+        </div>
+
+        <h2 class="pt-5">Feedback Data</h2>
+
+        <ul>
+            {% for fe in feed_data %}
+            <li>
+                <hr> User Name = {{ fe.cust_data.full_name }}<br> Time = {{ fe.date_time }}<br> User Rating = {{ fe.rating }}<br> User Feedback = {{ fe.feedback }}
+                <hr>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</section>
+
+
+<section class="w3l-blog post-content py-5">
+    <div class="container py-lg-3 py-md-4 py-2">
+        <div class="heading text-center mx-auto">
+            <h3 class="title-big">Also Visit</h3>
+        </div>
+
+        <div class="row pt-md-5 pt-4">
+            {% for p in data_set %}
+            <div class="col-lg-3 col-md-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ p.image.url }}" style="height: 300px;" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'profile' id=p.id %}">Rent</a></h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Name : {{p.title}}</li>
+                        <li class="list-group-item">Price : ₹{{p.price}}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    </div>
+
+</section>
+
+
+<!--//blog-posts-->
+<!-- footers 20 -->
+{% endblock content_data %}

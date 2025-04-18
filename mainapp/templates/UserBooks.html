@@ -1,0 +1,57 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block content_data %}
+
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
+        <div class="container pt-lg-5 py-3">
+        </div>
+    </div>
+</section>
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a href="{% url 'UserIndexPage' %}">Home</a></li>
+            <span class="fa fa-angle-right mx-2" aria-hidden="true"></span> 
+            <li ><a class="active">Bookings</a></li>
+        </ul>
+    </div>
+</section>
+
+<section class="w3l-breadcrumb">
+  <style>
+     h3{
+        color:#f93;
+     }
+     p{
+        color:#f93;
+     }
+  </style>
+  <div class="container">
+    {% for i in prod %}
+        
+        <div class="card mt-1">
+            <div class="card-body">
+                {% if i.boked == True %}
+                    <h3><a href="{% url 'viewBooks' i.id %}">{{ i.prop_id.title }}</a></h3>
+                {% else %}
+                <h3>{{ i.prop_id.title }}</h3>
+                {% endif %}
+                <p style="text-align: right;">
+                    
+                    {% if i.boked == True %}
+                        Booked
+                    {% else %}
+                        Pending
+                    {% endif %}
+                        
+                </p>
+            </div>
+          </div>
+    {% endfor %}
+</div>
+  
+  
+</section>
+
+{% endblock content_data %}

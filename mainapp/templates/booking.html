@@ -1,0 +1,29 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block content_data %}
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
+        <div class="container pt-lg-5 py-3">
+        </div>
+    </div>
+</section>
+
+<center>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <b>Your_Name:{{ user.full_name }}</b><br>
+    <b>Owner_Email:{{ prod.email_id }}</b><br>
+
+    <b>Property_name:{{ prod.title  }}</b><br>
+    <br>
+    <b><label>
+        Submit Your Agreement Form Here:
+    </label></b>
+    <input type="file" name="document" id="document" placeholder="Document"><br>
+
+    <input type="submit" value="Send Booking Request">
+</form>
+<b><p style="color: rgb(47, 0, 255)">{{ error }}</p></b>  <br>         
+</center>
+ <!-- footers 20 -->
+ {% endblock content_data %}

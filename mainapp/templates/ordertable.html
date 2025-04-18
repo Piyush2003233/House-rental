@@ -1,0 +1,99 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block content_data %}
+
+    <script src="htpp://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
+    <script>
+     $(document).ready( function () {
+        $('#demo').DataTable();
+    } );
+    </script>
+  </head>
+  <section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
+        <div class="container pt-lg-5 py-3">
+        </div>
+    </div>
+</section>
+    <div class="container-fluid">
+        <table id="demo" class="table table-striped " style="width:100%">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Owner Name</th>
+                    <th>Property Name</th>
+                    <th>Amount</th>
+                    <th>transactionId</th>
+                    <th>orderDate</th>            
+                               
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in order %}
+                <tr>
+                    <td>{{i.user}}</td>
+                    <td >{{i.Owner}}</td>
+                    <td>{{i.prop_name}}</td>
+                    <td>{{i.Amount}}</td>
+                    <td>{{i.transactionId}}</td>
+                    <td>{{i.orderDate}}</td>
+                   
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>  
+{% comment %}         
+<table id="demo" class="table table-striped " style="width:100%">
+    <thead>
+        <tr>
+            <th>Order Id</th>
+            <th>Product</th>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Price</th>
+            <th>Quantity</th>            
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in CartData %}
+        <tr>
+            <th class="m-5">{{i.orderId}}</td>
+            <td > 
+              <div class="" style="height: 100px; width: 100px;"><img src="{{i.productImage}}" height="100%" width="100%"/></div>
+            </td>
+            <td><div style="height:auto; width: 400px;">{{i.productName}}</div></td>
+            <td>{{i.productdisc}}</td>
+            <td>{{i.totalPrice}}</td>
+            <td>{{i.qty}}</td>
+    
+        </tr>
+        {% endfor %} {% endcomment %}
+        {% comment %} <tr>
+            <th class="m-5">123456</td>
+            <td > 
+              <div class="" style="height: 100px; width: 100px;"><img src="img/product-1.png" height="100%" width="100%"/></div>
+            </td>
+            <td><div style="height:auto; width: 400px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora libero quia placeat sequi illum ut rerum blanditiis non odit, nihil a, dolores, similique nisi minus! In laboriosam soluta excepturi eveniet!</div></td>
+            <td>Product 1</td>
+            <td>799</td>
+            <td>1</td>
+            <td>2011-04-25</td>
+        </tr>
+        <tr>
+            <th class="m-5">123456</td>
+            <td > 
+              <div class="" style="height: 100px; width: 100px;"><img src="img/product-1.png" height="100%" width="100%"/></div>
+            </td>
+            <td><div style="height:auto; width: 400px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora libero quia placeat sequi illum ut rerum blanditiis non odit, nihil a, dolores, similique nisi minus! In laboriosam soluta excepturi eveniet!</div></td>
+            <td>Product 1</td>
+            <td>799</td>
+            <td>1</td>
+            <td>2011-04-25</td>
+        </tr> {% endcomment %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

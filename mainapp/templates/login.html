@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+    <!--===============================================================================================-->
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../static/assets/images/user_login.jpg');
+            background-size: cover;
+            background-position: left;
+            background-color: transparent;
+        }
+        
+        .container-login100 {
+            background-color: transparent;
+        }
+        a{
+            color:blue;
+        }
+        a:hover{
+            color:black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+                <form method="POST">
+                    {% csrf_token %}
+                    <span class="login100-form-title p-b-32">
+					User Account Login
+				</span>
+                    <input class="form-control" type="email" name="email_id" value="{{ email_id }}" placeholder="Enter Email"><br>
+                    <input class="form-control" type="password" name="password" value="{{ password }}" placeholder="Enter Password"><br>
+                    <b><p style="color: red">{{ error }}</p></b>  <br>         
+                    <button class="btn btn-primary mx-auto" type="submit">Login</button>
+                </form>
+                <div class="py-2 ">
+                    <br>
+                    <span style=""><a href="{% url 'register' %}">Are you new user?</a><br>
+                    <a href="{% url 'ownerlogin' %}">Are you Owner ?</a>
+                    </span>
+
+                    {% comment %} <h5><u><a href="{% url 'forgotpass' %}">Forget password</a></u></h5> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="{% static 'login/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'login/js/main.js' %}"></script>
+
+</body>
+
+</html>

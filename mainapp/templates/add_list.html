@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+#bdy{
+	background: url('/static/images/bgimage.jpg')50% 0 no-repeat fixed;
+}
+      </style>
+	<title>Add Listing</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'addlist/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/vendor/noui/nouislider.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'addlist/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body id="bdy" style="">
+
+	<b><p style="color: rgb(25, 0, 255)">{{ approve }}</p></b>  <br>         
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<span class="contact100-form-title">
+					Add Property
+				</span>
+
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Title">
+					<span class="label-input100">TITLE *</span>
+					<input class="input100" type="text" name="title" placeholder="Enter Title">
+				</div>
+
+
+				<div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Address *</span>
+					<input class="input100" type="text" name="address" placeholder="Enter adress">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Area *</span>
+					<input class="input100" type="text" name="country"  placeholder="Enter Area">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Apartment Type *</span>
+					<input class="input100" type="text" name="apartment_type"  placeholder="Enter Typr">
+				</div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Beds *</span>
+					<input class="input100" type="number" name="beds_qty"  placeholder="Enter No.of Beds">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Baths *</span>
+					<input class="input100" type="number" name="baths_qty"  placeholder="Enter No.of baths">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">sqrft *</span>
+					<input class="input100" type="number" name="sqrft" placeholder="Enter sqrft">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">price *</span>
+					<input class="input100" type="number" name="price"  placeholder="Enter Price">
+				</div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Image *</span>
+					<input class="input100" type="file" name="image">
+				</div>
+
+				<div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Video </span>
+					<input class="input100" type="file" name="video">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Description *</span>
+					<input class="input100" type="text" name="description" placeholder="Enter Description">
+				</div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Rooms *</span>
+					<input class="input100" type="number" name="rooms"  placeholder="Enter No.of rooms">
+				</div>
+
+                <span class="contact100-form-title">
+					Amenities
+				</span>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Air Conditioner</span>
+					<input class="input100" type="checkbox" name="AC">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Built-in Wardrobe</span>
+					<input class="input100" type="checkbox" name="builtin_wardrobe">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Dish washer</span>
+					<input class="input100" type="checkbox" name="dish_washer">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Floor Covering</span>
+					<input class="input100" type="checkbox" name="floor_covering">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Medical</span>
+					<input class="input100" type="checkbox" name="medical">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Fencing</span>
+					<input class="input100" type="checkbox" name="fencing">
+				</div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Internet</span>
+					<input class="input100" type="checkbox" name="internet">
+				</div>
+				
+
+				
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" type="submit">
+						<span>
+							Submit
+							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+<!--===============================================================================================-->
+	<script src="{% static 'addlist/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'addlist/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'addlist/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'addlist/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'addlist/vendor/select2/select2.min.js' %}"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+
+
+			$(".js-select2").each(function(){
+				$(this).on('select2:close', function (e){
+					if($(this).val() == "Please chooses") {
+						$('.js-show-service').slideUp();
+					}
+					else {
+						$('.js-show-service').slideUp();
+						$('.js-show-service').slideDown();
+					}
+				});
+			});
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'addlist/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'addlist/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'addlist/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'addlist/vendor/noui/nouislider.min.js' %}"></script>
+	<script>
+	    var filterBar = document.getElementById('filter-bar');
+
+	    noUiSlider.create(filterBar, {
+	        start: [ 1500, 3900 ],
+	        connect: true,
+	        range: {
+	            'min': 1500,
+	            'max': 7500
+	        }
+	    });
+
+	    var skipValues = [
+	    document.getElementById('value-lower'),
+	    document.getElementById('value-upper')
+	    ];
+
+	    filterBar.noUiSlider.on('update', function( values, handle ) {
+	        skipValues[handle].innerHTML = Math.round(values[handle]);
+	        $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+	        $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+	    });
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'addlist/js/main.js' %}"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% extends 'adminbase.html' %} {% load static %} {% block content_data %}
+<!--/header-->
+<section class="w3l-cover-3">
+    <div class="cover top-bottom">
+        <div class="container">
+            <div class="middle-section text-center">
+                <div class="section-width">
+                    <p>Response according to your convenience</p>
+                    <h2>check Agreement carefully</h2>
+                </div>
+                <section id="bottom" class="demo">
+                    <a href="#bottom"><span></span>Scroll</a>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container">
+    <div class="row justify-content-center p-4">
+        <div class="col-12 col-md-6 p-5 card">
+            <h3 class="text-uppercase font-weight-bold text-center">Booking Edit</h3>
+            <form method="POST" enctype="multipart/form-data" action="/update/{{ book.id }}/">
+                {% csrf_token %}
+                <br />
+                <div class="form-group row">
+                    <div class="col-md-4">
+                      <label for="staticName" class="col-auto col-form-label">Name</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" readonly class="form-control" id="staticName" value="{{ book.user_id }}" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticOwner" class="col-auto col-form-label">Owner Name</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" readonly class="form-control" id="staticOwner" value="{{ book.owner_id }}" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticProperty" class="col-auto col-form-label">Property Name</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" readonly class="form-control" id="staticProperty" value="{{ book.prop_id }}" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label class="col-auto col-form-label d-inline-block" for="customCheck1" >Want to Approve:</label>
+                  </div>
+                  <div class="col-md-8">
+                    <select class="form-control" id="boked" name="boked">
+                      <option value="True">Approve</option>
+                      <option value="False">Reject</option>
+                    </select>
+                  </div>
+                </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="staticDocument" class="col-auto col-form-label">Document</label>
+                </div>
+                <div class="col-md-8">
+                  <object data="{{book.document.url}}" type="application/pdf,.zip,.rar,.7zip" width="150" height="200" >
+                    <a target="_blank" href="{{book.document.url}}">View File</a>
+                  </object>
+                </div>
+              </div>
+              <button type="submit" value="Submit Response" class="btn btn-outline-success text-center">Submit Response</button>
+          </form>
+      </div>
+    </div>
+</section>
+
+<!--  //News section -->
+
+<!-- footers 20 -->
+{% endblock content_data %}

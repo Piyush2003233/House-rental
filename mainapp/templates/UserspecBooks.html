@@ -1,0 +1,55 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block content_data %}
+
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
+        <div class="container pt-lg-5 py-3">
+        </div>
+    </div>
+</section>
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a href="{% url 'UserIndexPage' %}">Home</a></li>
+            <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> Bookings</li>
+        </ul>
+    </div>
+</section>
+
+<section class="w3l-breadcrumb">
+  
+  <div class="container">
+        <div class="card">
+            <div class="card-body">
+                Owner Name : {{ prod.owner_id.Ownername }}<br>
+                Owner No : {{ prod.owner_id.Ownerphone }}<br>
+                Owner Email : {{ prod.owner_id.Owneremail }}<br>
+                Room Image : <img src="{{ prod.prop_id.image.url }}" width="200px"><br><br>
+                Room Count : 1 <br>
+                Room Date : {{ prod.date }}<br>
+            </div>
+          </div>
+</div>
+{% if prod.pyment %}
+ 
+{% else %}
+<form method='POST' action="{% url 'paymentofbooking' %}" >
+    {% csrf_token %}
+    <input type="hidden" value="{{ prod.user_id.full_name }}" name='user'>
+    <input type="hidden" value="{{ prod.owner_id.Ownername }}" name='owner'>
+    <input type="hidden" value="{{ prod.prop_id.price }}" name='price'>
+    <input type="hidden" value="{{ prod.prop_id.title }}" name='prop_name'>
+    <input type="hidden" value="{{ prod.id }}" name='id'>
+  <button
+    type="submit"
+    class="btn btn-success btn-lg" style="background-color: #7AB730 ; border: 0;"
+    name="submit"
+    value="buy">
+    Payment
+  </button>
+</form>
+{% endif %} 
+</section>
+
+{% endblock content_data %}

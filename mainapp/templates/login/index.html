@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Multi Login </title>
+	<!-- Meta tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- Style -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+</head>
+
+<body>
+	<!-- login form -->
+	<section class="w3l-login-form">
+		<div id="form-section">
+			<div class="wrapper">
+
+				<!-- logo -->
+				<div class="logo">
+					<a class="brand-logo"> login As</a>
+				</div>
+				<!-- //logo -->
+
+				<!-- form -->
+				<div class="login-form">
+					<form>
+		
+						<center><a href="{% url 'index' %}">Guest User</a></center>
+						<br>
+						
+						<center><a href="{% url 'login' %}">User</a></center>
+						<br>
+						
+						<center><a href="{% url 'ownerlogin' %}">Owner</a></center>
+		
+					</form>
+				</div>
+
+				<!-- //form -->
+
+
+				<!-- //copyright -->
+
+			</div>
+		</div>
+	</section>
+	<!-- /login form -->
+</body>
+
+</html>
